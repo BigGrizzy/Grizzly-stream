@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working with the HTML Video Element</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #141414;
+            color: #fff;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Top bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            padding: 18px 4%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+        }
+
+        .brand {
+            color: #e50914;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .navbar a {
+            color: #e5e5e5;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .navbar a:hover {
+            color: #b3b3b3;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            padding: 90px 4% 40px;
+            background:
+                radial-gradient(ellipse at top, rgba(229, 9, 20, 0.25), transparent 60%),
+                #141414;
+        }
+
+        .player-wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
+            background: #000;
+        }
+
+        video {
+            display: block;
+            width: 100%;
+            height: auto;
+            background: #000;
+        }
+
+        .info {
+            max-width: 1000px;
+            margin: 28px auto 0;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin: 14px 0;
+            font-size: 0.95rem;
+            color: #b3b3b3;
+        }
+
+        .match {
+            color: #46d369;
+            font-weight: 700;
+        }
+
+        .badge {
+            border: 1px solid #777;
+            padding: 1px 7px;
+            font-size: 0.8rem;
+            color: #ddd;
+        }
+
+        .description {
+            max-width: 650px;
+            color: #d2d2d2;
+            line-height: 1.5;
+            font-size: 1.05rem;
+        }
+
+        /* Thumbnail row */
+        .row {
+            padding: 20px 4% 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .row h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 10px 0 20px;
+            scrollbar-width: none;
+        }
+
+        .cards::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card {
+            flex: 0 0 auto;
+            width: 230px;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #222;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.12);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+
+        .card img {
+            display: block;
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+        }
+
+        .card p {
+            padding: 10px 12px;
+            font-size: 0.85rem;
+            color: #ddd;
+        }
+
+        @media (max-width: 600px) {
+            .navbar a {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <span class="brand">Stream</span>
+        <a href="#">Home</a>
+        <a href="#">Videos</a>
+        <a href="#">My List</a>
+    </nav>
+
+    <section class="hero">
+        <div class="player-wrap">
+            <video width="640" loop controls muted
+                poster="https://cdn.freecodecamp.org/curriculum/labs/past-event2.jpg">
+                <source
+                    src="https://cdn.freecodecamp.org/curriculum/labs/what-is-the-map-method-and-how-does-it-work.mp4"
+                    type="video/mp4">
+                <source src="https://cdn.freecodecamp.org/curriculum/labs/mapmethod.webm" type="video/webm">
+                <source src="https://cdn.freecodecamp.org/curriculum/labs/mapmethod.ogg" type="video/ogg">
+                <source src="https://cdn.freecodecamp.org/curriculum/labs/mapmethod.mov" type="video/quicktime">
+            </video>
+        </div>
+
+        <div class="info">
+            <h1>Working with the HTML Video Element</h1>
+            <div class="meta">
+                <span class="match">98% Match</span>
+                <span>2026</span>
+                <span class="badge">HD</span>
+                <span>Tutorial</span>
+            </div>
+            <p class="description">
+                Learn how the HTML video element works, from controls and looping to
+                poster images and multiple video formats.
+            </p>
+        </div>
+    </section>
+
+    <section class="row">
+        <h2>More Like This</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="https://cdn.freecodecamp.org/curriculum/labs/past-event2.jpg" alt="Video thumbnail 1">
+                <p>Episode 1</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn.freecodecamp.org/curriculum/labs/past-event2.jpg" alt="Video thumbnail 2">
+                <p>Episode 2</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn.freecodecamp.org/curriculum/labs/past-event2.jpg" alt="Video thumbnail 3">
+                <p>Episode 3</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn.freecodecamp.org/curriculum/labs/past-event2.jpg" alt="Video thumbnail 4">
+                <p>Episode 4</p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
